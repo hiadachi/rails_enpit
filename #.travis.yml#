@@ -1,0 +1,17 @@
+language: ruby
+rvm:
+- 2.2.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: VLxRkg/im2Z1oPHWNgjUZVsTEjB9UnzepTNmjKpINAO69xX1a1pHoJ8UeBHl7XBqWz/Ye+Vdvwp29Te4pmu3wkIsHFpOxr/eklcgMVVNU4+Y5Q/IKy6B8lOTgltDz0WTDUBvk9ErAZEAEJph7sJAGsFMKXSeKNTSAnPXPzXRZoVWFYi36Sg4K5M8v7fIpbbohhhITT2hT0Fq0sdz1misKkyh0jWiUNBQNdTBBVAmLFhdQo0qRFuGHWgrqzmGfN1sE5mQ4MU6n9SysUsJlbi6i2eqzChCyjeypdyUrQ/z/mxVG9hq99XL93BbzPkVp5bSO2gqfOxNlw9Ik5d9+VbevW0cwU8FgmDVKjdXHWKRCWCwMny6zRBtXsvNUaodHTTR9k+E0RBfXXIilrsEfFFTH+wdZMZ4cu/4AgNNWwHJNbMAVjcq1beDJ+t4xn3E6i2ohtwvIu3lzPr/qwtBaZ0/zz5ipM+BWzzEIcWVMzsl/Pk/AbiQ1+4SEJW/Ebg00QcBwBJuam/mKdGthygEp+0qBiPiUA7u8GQ12CBtnNVv9ZPthlYU0432eJ/uDuWal0cNJsxBi64bccTEpxBZVsOoUgK4IE8XoKf9Wyf0ioChRPAttEF/K4OqqNOD1kB7d8meZeun4FgeWplaK92UY0jCVstYlmqzT80Hg1n30w3Ry9U=
+  app: powerful-retreat-6462
+  on:
+    repo: hiadachi/rails_enpit
+    branch: fixture
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+s
